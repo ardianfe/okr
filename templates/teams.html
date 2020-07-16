@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block heading %} Progress {% endblock %}
+{% block tagline %} Key result mingguan {% endblock %}
+       
+ 
+{% block content %}
+{{ okr.objective }}
+<div class=row>
+    {% for kr in k_results %}
+    <ul>
+        <div class="col-sm-4" style="background-color:yellow;">
+            {{ kr.indicator }}
+        </div>
+        <div class="col-sm-4" style="background-color:yellow;">
+                {{ kr.id }}
+        </div>
+       
+
+        <div class="col-sm-4">
+            <form action="{{ url_for ('progress_kr', kr_id=kr.id) }}" method="post">
+                <input type="number" name="progress">
+                <input type="submit">
+            </form>
+            
+        </div>
+    </ul>
+    {% endfor %}
+       
+</div>
+    {% endblock %}

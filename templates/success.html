@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Bootply" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css' )}}" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <title>Landing Page</title>
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container-full">
+        <div class="row">
+            <div class="col-lg-12 text-center v-center">
+                <h1>Hello Landing</h1>
+                <p class="lead">A Sign Up page example for Bootstrap</p>
+                <br>
+                <br>
+                <br>
+                <form class="col-lg-12">
+                    <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
+                        <h3>Thank you</h3>
+                        <p> We will send you an e-mail as soon as our app is ready</p>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <!-- /row -->
+        
+    </div>
+    <!-- /container full  -->
+
+    <div class="container">
+        <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3>Hello.</h3>
+                    </div>
+                    <div class="panel-body">No aliquyam sit et aliquyam dolore sanctus sit. Rebum justo eirmod eos amet ut. Gubergren sit et at kasd. Et.    
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3>Hello.</h3>
+                    </div>
+                    <div class="panel-body">Und noch einst nun herzen ihr nebel nun. Verschwand ihr vom erfreuet die es trüben. Vom schwebet mich bilder zauberhauch..    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <br>
+                <br>
+                <p class="pull-right"><a href="http://www.bootply.com">Template from Bootply</a> &nbsp; Copytrighht 2014 ACME <sup>TM</sup> Brand. </p>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <!-- script reference -->
+    <script src=" {{ url_for('static', filename='js/bootstrap-native.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

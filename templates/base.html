@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} - My Webpage</title>
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css' )}}" rel="stylesheet">
+    <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet"> -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+    {% endblock %}
+</head>
+<body>
+    <div class="jumbotron text-center">
+            <h1>{% block heading %}{% endblock %}</h1>
+            <p>{% block tagline %}{% endblock %}</p>
+    </div>
+    <div class="container" style="margin-bottom: 50; min-height:50vh">
+        <div class="row">
+            {% block content %}{% endblock %}
+
+        </div>   
+    </div>
+    
+    <!-- footer-->
+    <div class="jumbotron text-center" style="margin-bottom: 0;">
+        
+                {% block footer %}
+                &copy; Copyright 2008 by <a href="http://domain.invalid/">you</a>.
+                {% endblock %}      
+    </div>
+
+    <!-- script reference -->
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap.native/2.0.24/bootstrap-native-v4.min.js"></script>
+    <script src=" {{ url_for('static', filename='js/bootstrap-native.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+   
+    {% block script %}{% endblock %}
+</body>
+</html>

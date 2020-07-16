@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block heading %} SIMPLKR {% endblock %}
+{% block tagline %}  register {% endblock %}
+       
+<div class="col-lg">  
+    {% block content %}
+    <form method="POST"> 
+        <input type="email" name="email" placeholder="email">
+        <input type="password" name="password" placeholder="password">
+        <input type="text" name="name" placeholder="name">
+        
+        <input type="submit" name="submit">
+    </form>
+    
+    {% endblock %}
+</div>

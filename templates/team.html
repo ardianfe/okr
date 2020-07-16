@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block heading %} Add Team OKR {% endblock %}
+{% block tagline %}  {{ team.id }} {% endblock %}
+       
+<div class="col-lg-4">  
+    {% block content %}
+
+    <form class="col-lg-4" action="{{ url_for('okr', team_id=team.id) }}" method="post">
+        <h3>Input New Objective</h3>
+        <div class="form-group"> 
+            <input class="form-control" type="text" name="objective" placeholder="input objective">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary active">Save</button>
+        </div>      
+    </form>
+
+
+    {% endblock %}
+</div>

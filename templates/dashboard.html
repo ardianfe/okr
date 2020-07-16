@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+  
+{% endblock %}
+
+{% block heading %} SIMPLKR {% endblock %}
+{% block tagline %} Memudahkan OKR {% endblock %}
+       
+  {% block content %}
+      <div class="col-sm" style="margin-bottom: 50px;">
+      <h3>OKR {{ user_name }}</h3>
+        <button onclick="myFunction('obj')">Add Objective</button>
+        <div id="obj" style="display: none">
+            <form class="col-sm" action="{{ url_for ('okr', user_id=user_id) }}" method="post">
+                <div><p>Input new objective</p></div>
+                <div class="form-group"> 
+                    <input class="form-control" type="text" name="okr" placeholder="input objective">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary active">Save</button>
+                </div>      
+            </form>
+        </div>
+      </div>
+     
+      {% for okr in okrs %}
+        <div class="col-sm">
+            <div class="card bg-light text-dark">
+            <div class="card-header">
+                <div class="row">
+                  <div class="col-md-10">
+                    <h3 class="w-75 p-3">{{okr.objective}}</h3>
+                  </div>
+                  <div class="col-md-2 float-right">
+                    <button class="btn btn-primary" onclick="window.location.href='{{ url_for( 'input_progress_kr', okr_id=okr.id)}}';">Add Proggress</button>
+                   </div>
+                </div>
+              </div>
+            <div class="card-body">
+            {% for kresult in kresults %}
+            {% if kresult.okr_id == okr.id %}
+            <ul>{{ kresult.indicator }}</ul>
+            
+            {% endif %}
+            {% endfor %}
+          </div>
+            
+            
+            <div class="card-footer">
+            {% set id_collapse = 'obj' ~ okr.id|string %}
+            {% set id_content = 'content' ~ okr.id|string %}
+          
+            <!-- <button id="{{ id_collapse }}">Add New KR</button>       -->
+            <button onclick="myFunction('{{ id_content }}')">Add Key Result</button>
+            <div id="{{ 'content' ~ okr.id|string }}" style="display: none">
+                <form class="col-sm" action="{{ url_for ('add_kr', okr_id=okr.id) }}" method="post">
+                    <h5>Input New Key Result</h5>
+                    <div class="form-group"> 
+                        <input class="form-control" type="text" name="key_result" placeholder="input key result">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary active">Save</button>
+                    </div>      
+                </form>
+
+            </div>
+            </div>
+
+         
+            
+            <!-- <a class="btn btn-primary" data-toggle="collapse" href="#{{ id_collapse }}" aria-expanded="false" aria-controls="{{ id_collapse }}">
+                Add key result
+            </a>
+             
+              <div class="collapse" id="{{ id_collapse }}">
+                <div class="card card-body">
+                    <form class="col-sm" action="{{ url_for ('add_kr', okr_id=okr.id)}}" method="post">
+                        <h3>Input New Key Result</h3>
+                        <div class="form-group"> 
+                            <input class="form-control" type="text" name="key_result" placeholder="input key result">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary active">Save</button>
+                        </div>      
+                    </form>
+                  
+                </div>
+              </div> -->
+        
+            </div>
+        </div>
+        {% endfor %}
+  {% endblock %}
+  
+  {% block script %} 
+  {{ super() }}
+  <script>
+      function myFunction(id_content) {
+        var x = document.getElementById(id_content);
+        if (x.style.display === "none") {
+        x.style.display = "block";
+        } else {
+        x.style.display = "none";
+        }
+      }
+  </script>
+  {% endblock %}
+
+    
